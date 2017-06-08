@@ -907,7 +907,7 @@ impl<F: StandardFrame> Capture<F> {
 
 
 	/// `alcCaptureSamples()`
-	pub fn capture_samples<R: AsBufferDataMut<F>>(&mut self, mut data: R) -> AltoResult<()> {
+	pub fn capture_samples<R: AsBufferDataMut<F>>(&mut self, &mut data: R) -> AltoResult<()> {
 		let mut data = data.as_buffer_data_mut();
 		if data.len() > self.samples_len() as usize { return Err(AltoError::AlcInvalidValue) }
 
